@@ -1,0 +1,23 @@
+GET http://localhost:3000/api/devices
+
+###
+
+GET http://localhost:3000/api/devices/xyz
+
+###
+
+POST http://localhost:3000/api/devices
+Content-Type: application/json
+
+{
+  "id": "xyz"
+}
+
+###
+
+DELETE http://localhost:3000/api/devices
+Content-Type: application/json
+
+{
+  "id": "xyz"
+}
