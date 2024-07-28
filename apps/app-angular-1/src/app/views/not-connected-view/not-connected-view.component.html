@@ -2,7 +2,7 @@
 
 <p>
   Generated device ID:
-  <span>some-id</span>
+  <span>{{ deviceId() }}</span>
 </p>
 
-<button>Connect</button>
+<button (click)="onConnect()" type="button">Connect</button>
