@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { NotConnectedViewComponentService } from './not-connected-view.component.service';
 
 @Component({
@@ -10,10 +10,12 @@ import { NotConnectedViewComponentService } from './not-connected-view.component
   imports: [CommonModule],
   providers: [NotConnectedViewComponentService],
 })
-export class NotConnectedViewComponent {
+export class NotConnectedViewComponent implements OnInit {
   deviceId = signal<string>('');
 
-  constructor(public service: NotConnectedViewComponentService) {
+  service = inject(NotConnectedViewComponentService);
+
+  ngOnInit() {
     this.deviceId.set(this.service.getRandomDeviceId());
   }
 

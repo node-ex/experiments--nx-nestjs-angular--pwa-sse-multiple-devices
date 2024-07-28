@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AdminViewComponentService } from './admin-view.component.service';
 
 @Component({
@@ -11,5 +11,5 @@ import { AdminViewComponentService } from './admin-view.component.service';
   providers: [AdminViewComponentService],
 })
 export class AdminViewComponent {
-  constructor(public service: AdminViewComponentService) {}
+  service = inject(AdminViewComponentService);
 }
