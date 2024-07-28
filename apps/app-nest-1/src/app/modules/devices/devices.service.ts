@@ -1,5 +1,5 @@
+import type { Device } from '@nestjs-angular-nx--template--basic/lib-js-1';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Device } from './types/device.interface';
 
 @Injectable()
 export class DevicesService {

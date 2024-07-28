@@ -1,26 +1,18 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Query,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { DevicesService } from './devices.service';
-import { Device } from './types/device.interface';
+import { DeviceDto } from '@nestjs-angular-nx--template--basic/lib-js-1';
 
 @Controller('devices')
 export class DevicesController {
   constructor(private devicesService: DevicesService) {}
 
   @Get()
-  getDevices(): Device[] {
+  getDevices(): DeviceDto[] {
     return this.devicesService.getDevices();
   }
 
   @Get(':id')
-  getDevice(@Param('id') id: string): Device {
+  getDevice(@Param('id') id: string): DeviceDto {
     return this.devicesService.getDevice(id);
   }
 
