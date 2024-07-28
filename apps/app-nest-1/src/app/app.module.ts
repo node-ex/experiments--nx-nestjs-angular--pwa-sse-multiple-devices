@@ -3,8 +3,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import path from 'path';
 import type { Response } from 'express';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { HealthcheckController } from './healthcheck.controller';
 
 @Module({
@@ -27,7 +25,7 @@ import { HealthcheckController } from './healthcheck.controller';
       },
     }),
   ],
-  controllers: [AppController, HealthcheckController],
-  providers: [AppService],
+  controllers: [HealthcheckController],
+  providers: [],
 })
 export class AppModule {}
