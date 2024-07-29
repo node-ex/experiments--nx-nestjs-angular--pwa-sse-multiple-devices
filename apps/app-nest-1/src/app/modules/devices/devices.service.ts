@@ -23,6 +23,8 @@ export class DevicesService {
   }
 
   deleteDevice(id: string): void {
+    // Throw if device does not exist
+    this.getDevice(id);
     this.devices = this.devices.filter((device) => device.id !== id);
   }
 }
