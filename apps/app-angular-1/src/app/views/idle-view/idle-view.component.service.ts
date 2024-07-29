@@ -4,6 +4,7 @@ import { ConnectedDevicesApiService } from '../../modules/devices/services/conne
 import { Router } from '@angular/router';
 import { TriggerSseEventSourceService } from '../../modules/trigger/services/trigger-sse-event-source.service';
 import { TriggeredDeviceIdService } from '../../modules/trigger/services/triggered-device-id.service';
+import { finalize } from 'rxjs';
 
 @Injectable()
 export class IdleViewComponentService {
@@ -32,12 +33,19 @@ export class IdleViewComponentService {
 
   public disconnectCurrentDevice(): void {
     const currentDeviceId = this.currentDeviceIdService.getCurrentDeviceId();
+
     this.connectedDevicesApiService
       .disconnectConnectedDevice({ id: currentDeviceId()! })
-      .subscribe({
-        complete: () => {
+      .pipe(
+        // Handles both success and error cases
+        finalize(() => {
           this.currentDeviceIdService.resetCurrentDeviceId();
           void this.router.navigate(['']);
+        }),
+      )
+      .subscribe({
+        error: (error) => {
+          console.error('An error occurred', error);
         },
       });
   }
