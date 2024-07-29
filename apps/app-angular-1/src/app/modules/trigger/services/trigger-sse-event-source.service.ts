@@ -1,8 +1,20 @@
-import { Injectable, signal, computed, effect, untracked } from '@angular/core';
+import {
+  Injectable,
+  signal,
+  computed,
+  effect,
+  untracked,
+  inject,
+} from '@angular/core';
+import { Router } from '@angular/router';
+import { CurrentDeviceIdService } from '../../devices/services/current-device-id.service';
 
 @Injectable()
 export class TriggerSseEventSourceService {
   triggerCount = signal<number>(0);
+
+  private currentDeviceIdService = inject(CurrentDeviceIdService);
+  private router = inject(Router);
 
   private eventSource!: EventSource;
   private readyStateNumber = signal<number>(0);
@@ -66,6 +78,9 @@ export class TriggerSseEventSourceService {
     console.log('EventSource onerror event', this.readyStateName(), event);
     // Client will automatically try to reconnect if the connection is not closed
     this.close();
+
+    this.currentDeviceIdService.resetCurrentDeviceId();
+    void this.router.navigate(['']);
   }
 
   private close(): void {

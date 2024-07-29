@@ -40,4 +40,15 @@ export class TriggerService {
       message: `Device ${triggerConnectedDeviceRequestDto.id} triggered`,
     };
   }
+
+  disconnectDevice(deviceId: string) {
+    if (!this.deviceSubjectMap.has(deviceId)) {
+      return;
+    }
+
+    this.deviceSubjectMap.get(deviceId)!.complete();
+    this.deviceSubjectMap.delete(deviceId);
+
+    console.log(`Client with device ID ${deviceId} disconnected`);
+  }
 }

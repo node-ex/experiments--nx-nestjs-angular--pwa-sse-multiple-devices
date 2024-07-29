@@ -5,10 +5,14 @@ import {
   ConnectNewDeviceRequestDto,
   DisconnectConnectedDeviceRequestDto,
 } from '@nestjs-angular-nx--template--basic/lib-js-1';
+import { TriggerService } from '../trigger/trigger.service';
 
 @Controller('connected-devices')
 export class ConnectedDevicesController {
-  constructor(private connectedDevicesService: ConnectedDevicesService) {}
+  constructor(
+    private connectedDevicesService: ConnectedDevicesService,
+    private triggerService: TriggerService,
+  ) {}
 
   @Get()
   getConnectedDevices(): ConnectedDeviceResponseDto[] {
@@ -28,5 +32,6 @@ export class ConnectedDevicesController {
   @Delete()
   disconnectConnectedDevice(@Body() body: DisconnectConnectedDeviceRequestDto) {
     this.connectedDevicesService.disconnectConnectedDevice(body.id);
+    this.triggerService.disconnectDevice(body.id);
   }
 }
