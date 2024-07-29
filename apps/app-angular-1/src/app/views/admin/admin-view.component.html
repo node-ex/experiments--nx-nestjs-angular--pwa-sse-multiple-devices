@@ -1,7 +1,14 @@
 <h1>Admin view</h1>
 
-<div *ngFor="let device of service.devices(); trackBy: service.trackById">
-  {{ device.id }}
+<div
+  *ngFor="
+    let connectedDevice of service.connectedDevices();
+    trackBy: service.trackById
+  "
+>
+  {{ connectedDevice.id }}
   <button>Trigger</button>
-  <button (click)="service.deleteDevice(device.id)">Delete</button>
+  <button (click)="service.disconnectConnectedDevice(connectedDevice.id)">
+    Disconnect
+  </button>
 </div>

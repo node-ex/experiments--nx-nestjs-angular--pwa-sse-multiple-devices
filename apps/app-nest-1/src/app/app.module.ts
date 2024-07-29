@@ -4,11 +4,11 @@ import path from 'path';
 import type { Response } from 'express';
 
 import { HealthcheckController } from './healthcheck.controller';
-import { DevicesModule } from './modules/devices/devices.module';
+import { ConnectedDevicesModule } from './modules/connected-devices/connected-devices.module';
 
 @Module({
   imports: [
-    DevicesModule,
+    ConnectedDevicesModule,
     // https://docs.nestjs.com/recipes/serve-static
     // https://github.com/nestjs/serve-static
     // https://github.com/nestjs/serve-static/blob/master/lib/interfaces/serve-static-options.interface.ts

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AdminViewComponentService } from './admin-view.component.service';
-import { DevicesApiService } from '../../modules/devices/devices.api.service';
+import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
 
 @Component({
   standalone: true,
@@ -9,7 +9,7 @@ import { DevicesApiService } from '../../modules/devices/devices.api.service';
   templateUrl: './admin-view.component.html',
   styleUrl: './admin-view.component.scss',
   imports: [CommonModule],
-  providers: [AdminViewComponentService, DevicesApiService],
+  providers: [AdminViewComponentService, ConnectedDevicesApiService],
 })
 export class AdminViewComponent {
   service = inject(AdminViewComponentService);

@@ -1,36 +1,40 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { DevicesApiService } from '../../modules/devices/devices.api.service';
-import { Device } from '@nestjs-angular-nx--template--basic/lib-js-1';
+import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
+import { ConnectedDevice } from '@nestjs-angular-nx--template--basic/lib-js-1';
 
 @Injectable()
 export class AdminViewComponentService {
-  devicesApiService = inject(DevicesApiService);
+  connectedDevicesApiService = inject(ConnectedDevicesApiService);
 
-  devices = signal<Device[]>([]);
+  connectedDevices = signal<ConnectedDevice[]>([]);
 
   constructor() {
-    this.getDevices();
+    this.getConnectedDevices();
   }
 
-  getDevices() {
-    this.devicesApiService.getDevices().subscribe((devices) => {
-      this.devices.set(devices);
+  getConnectedDevices() {
+    this.connectedDevicesApiService
+      .getConnectedDevices()
+      .subscribe((devices) => {
+        this.connectedDevices.set(devices);
+      });
+  }
+
+  connectNewDevice(device: ConnectedDevice) {
+    this.connectedDevicesApiService.connectNewDevice(device).subscribe(() => {
+      this.getConnectedDevices();
     });
   }
 
-  createDevice(device: Device) {
-    this.devicesApiService.createDevice(device).subscribe(() => {
-      this.getDevices();
-    });
+  disconnectConnectedDevice(id: string) {
+    this.connectedDevicesApiService
+      .disconnectConnectedDevice({ id })
+      .subscribe(() => {
+        this.getConnectedDevices();
+      });
   }
 
-  deleteDevice(id: string) {
-    this.devicesApiService.deleteDevice(id).subscribe(() => {
-      this.getDevices();
-    });
-  }
-
-  trackById(index: number, device: Device) {
+  trackById(_index: number, device: ConnectedDevice) {
     return device.id;
   }
 }

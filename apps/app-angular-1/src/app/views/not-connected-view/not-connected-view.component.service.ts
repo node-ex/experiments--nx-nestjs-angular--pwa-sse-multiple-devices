@@ -1,22 +1,23 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { DevicesApiService } from '../../modules/devices/devices.api.service';
+import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
 import { CurrentDeviceIdService } from '../../modules/devices/current-device-id.service';
 
 @Injectable()
 export class NotConnectedViewComponentService {
-  public currentDeviceIdService = inject(CurrentDeviceIdService);
-
   public newDeviceId = signal<string>('');
 
-  private devicesApiService = inject(DevicesApiService);
+  private connectedDevicesApiService = inject(ConnectedDevicesApiService);
+  private currentDeviceIdService = inject(CurrentDeviceIdService);
 
   public constructor() {
     this.newDeviceId.set(this.getRandomDeviceId());
   }
 
-  public createDevice(): void {
-    this.devicesApiService.createDevice({ id: this.newDeviceId() }).subscribe();
+  public connectNewDevice(): void {
+    this.connectedDevicesApiService
+      .connectNewDevice({ id: this.newDeviceId() })
+      .subscribe();
     this.currentDeviceIdService.setCurrentDeviceId(this.newDeviceId());
   }
 

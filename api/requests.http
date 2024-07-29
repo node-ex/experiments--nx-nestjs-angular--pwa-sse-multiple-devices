@@ -1,12 +1,12 @@
-GET http://localhost:3000/api/devices
+GET http://localhost:3000/api/connected-devices
 
 ###
 
-GET http://localhost:3000/api/devices/ab1234
+GET http://localhost:3000/api/connected-devices/ab1234
 
 ###
 
-POST http://localhost:3000/api/devices
+POST http://localhost:3000/api/connected-devices
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/devices
+DELETE http://localhost:3000/api/connected-devices
 Content-Type: application/json
 
 {
