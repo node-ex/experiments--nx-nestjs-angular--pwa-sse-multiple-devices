@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AdminViewComponentService } from './admin-view.component.service';
-import { TriggerApiService } from '../../modules/trigger/services/trigger.api.service';
 
 @Component({
   standalone: true,
@@ -9,7 +8,7 @@ import { TriggerApiService } from '../../modules/trigger/services/trigger.api.se
   templateUrl: './admin-view.component.html',
   styleUrl: './admin-view.component.scss',
   imports: [CommonModule],
-  providers: [AdminViewComponentService, TriggerApiService],
+  providers: [AdminViewComponentService],
 })
 export class AdminViewComponent {
   service = inject(AdminViewComponentService);

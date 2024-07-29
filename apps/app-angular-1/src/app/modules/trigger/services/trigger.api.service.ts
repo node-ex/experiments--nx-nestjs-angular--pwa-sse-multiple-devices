@@ -3,7 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { TriggerConnectedDeviceRequestDto } from '@nestjs-angular-nx--template--basic/lib-js-1';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TriggerApiService {
   http = inject(HttpClient);
 
