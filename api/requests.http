@@ -2,7 +2,7 @@ GET http://localhost:3000/api/devices
 
 ###
 
-GET http://localhost:3000/api/devices/xyz
+GET http://localhost:3000/api/devices/ab1234
 
 ###
 
@@ -10,7 +10,7 @@ POST http://localhost:3000/api/devices
 Content-Type: application/json
 
 {
-  "id": "xyz"
+  "id": "ab1234"
 }
 
 ###
@@ -19,5 +19,5 @@ DELETE http://localhost:3000/api/devices
 Content-Type: application/json
 
 {
-  "id": "xyz"
+  "id": "ab1234"
 }
