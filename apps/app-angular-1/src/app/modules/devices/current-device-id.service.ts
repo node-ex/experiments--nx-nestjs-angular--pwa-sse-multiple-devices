@@ -18,4 +18,9 @@ export class CurrentDeviceIdService {
     this.currentDeviceId.set(deviceId);
     localStorage.setItem(CURRENT_DEVICE_ID_KEY, deviceId);
   }
+
+  resetCurrentDeviceId(): void {
+    this.currentDeviceId.set(null);
+    localStorage.removeItem(CURRENT_DEVICE_ID_KEY);
+  }
 }
