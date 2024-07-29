@@ -1,8 +1,8 @@
-# showcase--nx-nestjs-angular--serve-fe-from-be
+# experiments--nx-nestjs-angular--pwa-sse-multiple-devices
 
-## Showcase
+## Experiments
 
-This is a showcase project that demonstrates how to serve an Angular frontend from a NestJS backend using `ServeStaticModule`. It also showcases how to Dockerize such a setup.
+This is a project that contains experiments to judge the feasibility of using SSE (Server-Sent Events) in a PWA (Progressive Web App) to work with multiple devices/clients in real-time.
 
 Steps:
 
@@ -11,11 +11,15 @@ Steps:
 3. Start NestJS development server or build and run it (using `node`, not `nx preview`)
 4. Go to `http://localhost:3000` to see FE served from BE
 
-Implementation: See a couple of latest commits.
+### Testing on a mobile device
 
-### Dockerization
+Use a tool similar to ngrok to expose the local server to the internet.
 
-You need to understand the basic Docker concepts. Use scripts in `./docker/app` folder to build and run the Docker image.
+```
+ngrok http 3000
+```
+
+Then, open the ngrok URL on a mobile device (real or emulated, e.g. using Android Studio).
 
 ## Local development
 
