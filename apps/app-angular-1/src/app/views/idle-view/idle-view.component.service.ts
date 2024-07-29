@@ -15,7 +15,7 @@ export class IdleViewComponentService {
     effect(() => {
       const triggerCount = this.triggerSseEventSourceService.triggerCount();
       if (triggerCount > 0) {
-        console.log('Triggered');
+        void this.router.navigate(['triggered']);
       }
     });
   }
