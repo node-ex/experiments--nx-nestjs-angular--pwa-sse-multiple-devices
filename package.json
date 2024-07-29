@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "start:be": "pnpm exec nx run app-nest-1:serve",
-    "start:fe": "pnpm exec nx run app-angular-1:serve"
+    "start:be:verbose": "pnpm exec nx --verbose run app-nest-1:serve",
+    "start:fe": "pnpm exec nx run app-angular-1:serve",
+    "start:fe:verbose": "pnpm exec nx --verbose run app-angular-1:serve"
   },
   "dependencies": {
     "@angular/animations": "~18.1.0",
