@@ -1,36 +1,42 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
 import { ConnectedDevice } from '@nestjs-angular-nx--template--basic/lib-js-1';
+import { TriggerApiService } from '../../modules/trigger/trigger.api.service';
 
 @Injectable()
 export class AdminViewComponentService {
-  connectedDevicesApiService = inject(ConnectedDevicesApiService);
-
   connectedDevices = signal<ConnectedDevice[]>([]);
+
+  private connectedDevicesApiService = inject(ConnectedDevicesApiService);
+  private triggerApiService = inject(TriggerApiService);
 
   constructor() {
     this.getConnectedDevices();
   }
 
   getConnectedDevices() {
-    this.connectedDevicesApiService
-      .getConnectedDevices()
-      .subscribe((devices) => {
+    this.connectedDevicesApiService.getConnectedDevices().subscribe({
+      next: (devices) => {
         this.connectedDevices.set(devices);
-      });
+      },
+    });
   }
 
-  connectNewDevice(device: ConnectedDevice) {
-    this.connectedDevicesApiService.connectNewDevice(device).subscribe(() => {
-      this.getConnectedDevices();
+  triggerConnectedDevice(id: string) {
+    this.triggerApiService.triggerConnectedDevice(id).subscribe({
+      next: () => {
+        this.getConnectedDevices();
+      },
     });
   }
 
   disconnectConnectedDevice(id: string) {
     this.connectedDevicesApiService
       .disconnectConnectedDevice({ id })
-      .subscribe(() => {
-        this.getConnectedDevices();
+      .subscribe({
+        next: () => {
+          this.getConnectedDevices();
+        },
       });
   }
 

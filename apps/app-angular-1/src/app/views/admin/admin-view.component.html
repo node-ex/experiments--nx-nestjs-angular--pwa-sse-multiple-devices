@@ -7,7 +7,9 @@
   "
 >
   {{ connectedDevice.id }}
-  <button>Trigger</button>
+  <button (click)="service.triggerConnectedDevice(connectedDevice.id)">
+    Trigger
+  </button>
   <button (click)="service.disconnectConnectedDevice(connectedDevice.id)">
     Disconnect
   </button>
