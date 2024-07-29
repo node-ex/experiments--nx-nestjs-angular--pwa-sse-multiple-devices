@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ConnectedDevicesApiService } from '../../modules/devices/services/connected-devices.api.service';
 import { ConnectedDevice } from '@nestjs-angular-nx--template--basic/lib-js-1';
-import { TriggerApiService } from '../../modules/trigger/trigger.api.service';
+import { TriggerApiService } from '../../modules/trigger/services/trigger.api.service';
 
 @Injectable()
 export class AdminViewComponentService {

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { IdleViewComponentService } from './idle-view.component.service';
 import { CurrentDeviceIdService } from '../../modules/devices/services/current-device-id.service';
-import { TriggerSseEventSourceService } from '../../modules/trigger/trigger-sse-event-source.service';
+import { TriggerSseEventSourceService } from '../../modules/trigger/services/trigger-sse-event-source.service';
 
 @Component({
   standalone: true,
