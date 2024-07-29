@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NotConnectedViewComponentService } from './not-connected-view.component.service';
+import { DevicesApiService } from '../../modules/devices/devices.api.service';
+import { CurrentDeviceIdService } from '../../modules/devices/current-device-id.service';
 
 @Component({
   standalone: true,
@@ -8,18 +10,12 @@ import { NotConnectedViewComponentService } from './not-connected-view.component
   templateUrl: './not-connected-view.component.html',
   styleUrl: './not-connected-view.component.scss',
   imports: [CommonModule],
-  providers: [NotConnectedViewComponentService],
+  providers: [
+    NotConnectedViewComponentService,
+    DevicesApiService,
+    CurrentDeviceIdService,
+  ],
 })
-export class NotConnectedViewComponent implements OnInit {
-  deviceId = signal<string>('');
-
+export class NotConnectedViewComponent {
   service = inject(NotConnectedViewComponentService);
-
-  ngOnInit() {
-    this.deviceId.set(this.service.getRandomDeviceId());
-  }
-
-  onConnect() {
-    console.log('connecting');
-  }
 }

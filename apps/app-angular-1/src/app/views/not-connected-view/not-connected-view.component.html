@@ -2,7 +2,7 @@
 
 <p>
   Generated device ID:
-  <span>{{ deviceId() }}</span>
+  <span>{{ service.newDeviceId() }}</span>
 </p>
 
-<button (click)="onConnect()" type="button">Connect</button>
+<button (click)="service.createDevice()" type="button">Connect</button>
