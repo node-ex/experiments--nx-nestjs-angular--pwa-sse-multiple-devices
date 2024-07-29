@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { IdleViewComponentService } from './idle-view.component.service';
 import { CurrentDeviceIdService } from '../../modules/devices/current-device-id.service';
 import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
+import { TriggerSseEventSourceService } from '../../modules/trigger/trigger-sse-event-source.service';
 
 @Component({
   standalone: true,
@@ -14,6 +15,14 @@ import { ConnectedDevicesApiService } from '../../modules/devices/connected-devi
     IdleViewComponentService,
     CurrentDeviceIdService,
     ConnectedDevicesApiService,
+    {
+      provide: TriggerSseEventSourceService,
+      useFactory: (currentDeviceIdService: CurrentDeviceIdService) => {
+        const currentDeviceId = currentDeviceIdService.getCurrentDeviceId();
+        return TriggerSseEventSourceService.create(currentDeviceId()!);
+      },
+      deps: [CurrentDeviceIdService],
+    },
   ],
 })
 export class IdleViewComponent {
