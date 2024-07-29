@@ -5,10 +5,12 @@ import type { Response } from 'express';
 
 import { HealthcheckController } from './healthcheck.controller';
 import { ConnectedDevicesModule } from './modules/connected-devices/connected-devices.module';
+import { TriggerModule } from './modules/trigger/trigger.module';
 
 @Module({
   imports: [
     ConnectedDevicesModule,
+    TriggerModule,
     // https://docs.nestjs.com/recipes/serve-static
     // https://github.com/nestjs/serve-static
     // https://github.com/nestjs/serve-static/blob/master/lib/interfaces/serve-static-options.interface.ts

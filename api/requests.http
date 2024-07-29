@@ -2,7 +2,7 @@ GET http://localhost:3000/api/connected-devices
 
 ###
 
-GET http://localhost:3000/api/connected-devices/ab1234
+GET http://localhost:3000/api/connected-devices/VA0008
 
 ###
 
@@ -10,7 +10,7 @@ POST http://localhost:3000/api/connected-devices
 Content-Type: application/json
 
 {
-  "id": "ab1234"
+  "id": "VA0008"
 }
 
 ###
@@ -19,5 +19,14 @@ DELETE http://localhost:3000/api/connected-devices
 Content-Type: application/json
 
 {
-  "id": "ab1234"
+  "id": "VA0008"
+}
+
+###
+
+POST http://localhost:3000/api/trigger
+Content-Type: application/json
+
+{
+  "id": "BA0002"
 }
