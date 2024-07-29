@@ -1,1 +1,7 @@
 <h1>Admin view</h1>
+
+<div *ngFor="let device of service.devices(); trackBy: service.trackById">
+  {{ device.id }}
+  <button>Trigger</button>
+  <button (click)="service.deleteDevice(device.id)">Delete</button>
+</div>
