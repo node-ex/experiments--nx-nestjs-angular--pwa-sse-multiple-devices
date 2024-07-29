@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { IdleViewComponentService } from './idle-view.component.service';
-import { CurrentDeviceIdService } from '../../modules/devices/current-device-id.service';
-import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
+import { CurrentDeviceIdService } from '../../modules/devices/services/current-device-id.service';
 import { TriggerSseEventSourceService } from '../../modules/trigger/trigger-sse-event-source.service';
 
 @Component({
@@ -13,8 +12,6 @@ import { TriggerSseEventSourceService } from '../../modules/trigger/trigger-sse-
   imports: [CommonModule],
   providers: [
     IdleViewComponentService,
-    CurrentDeviceIdService,
-    ConnectedDevicesApiService,
     {
       provide: TriggerSseEventSourceService,
       useFactory: (currentDeviceIdService: CurrentDeviceIdService) => {

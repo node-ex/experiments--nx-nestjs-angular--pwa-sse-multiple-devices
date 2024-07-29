@@ -7,7 +7,9 @@ import {
 } from '@nestjs-angular-nx--template--basic/lib-js-1';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ConnectedDevicesApiService {
   http = inject(HttpClient);
 

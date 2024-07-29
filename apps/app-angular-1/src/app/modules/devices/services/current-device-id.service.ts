@@ -2,7 +2,9 @@ import { Injectable, Signal, signal } from '@angular/core';
 
 const CURRENT_DEVICE_ID_KEY = 'currentDeviceId';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CurrentDeviceIdService {
   private currentDeviceId = signal<string | null>(null);
 

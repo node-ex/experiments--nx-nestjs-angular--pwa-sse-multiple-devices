@@ -1,6 +1,6 @@
 import { effect, inject, Injectable } from '@angular/core';
-import { CurrentDeviceIdService } from '../../modules/devices/current-device-id.service';
-import { ConnectedDevicesApiService } from '../../modules/devices/connected-devices.api.service';
+import { CurrentDeviceIdService } from '../../modules/devices/services/current-device-id.service';
+import { ConnectedDevicesApiService } from '../../modules/devices/services/connected-devices.api.service';
 import { Router } from '@angular/router';
 import { TriggerSseEventSourceService } from '../../modules/trigger/trigger-sse-event-source.service';
 
