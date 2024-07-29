@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AppComponentService } from './app.component.service';
 
 @Component({
   standalone: true,
-  imports: [RouterModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
+  imports: [RouterModule],
+  providers: [AppComponentService],
 })
-export class AppComponent {}
+export class AppComponent {
+  service = inject(AppComponentService);
+}

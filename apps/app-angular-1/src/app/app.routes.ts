@@ -4,6 +4,7 @@ import { AdminViewComponent } from './views/admin/admin-view.component';
 import { IdleViewComponent } from './views/idle-view/idle-view.component';
 import { TriggeredViewComponent } from './views/triggered/triggered-view.component';
 import { connectedDeviceGuardFn } from './modules/devices/guards/connected-device.guard';
+import { triggeredDeviceGuardFn } from './modules/trigger/guards/triggered-device.guard';
 
 export const appRoutes: Route[] = [
   {
@@ -22,6 +23,6 @@ export const appRoutes: Route[] = [
   {
     path: 'triggered',
     component: TriggeredViewComponent,
-    canActivate: [connectedDeviceGuardFn],
+    canActivate: [connectedDeviceGuardFn, triggeredDeviceGuardFn],
   },
 ];
