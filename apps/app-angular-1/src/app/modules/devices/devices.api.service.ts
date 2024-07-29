@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { DeviceDto } from '@nestjs-angular-nx--template--basic/lib-js-1';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class DevicesApiService {
@@ -15,25 +15,15 @@ export class DevicesApiService {
     return this.http.get<DeviceDto>(`/api/devices/${id}`);
   }
 
-  createDevice(device: DeviceDto): Observable<undefined> {
-    return this.http.post<undefined>('/api/devices', device).pipe(
-      tap((val) => {
-        console.log('val', val);
-      }),
-    );
+  createDevice(device: DeviceDto): Observable<null> {
+    return this.http.post<null>('/api/devices', device);
   }
 
-  deleteDevice(id: string): Observable<undefined> {
-    return this.http
-      .delete<undefined>('/api/devices', {
-        body: {
-          id,
-        },
-      })
-      .pipe(
-        tap((val) => {
-          console.log('val', val);
-        }),
-      );
+  deleteDevice(id: string): Observable<null> {
+    return this.http.delete<null>('/api/devices', {
+      body: {
+        id,
+      },
+    });
   }
 }

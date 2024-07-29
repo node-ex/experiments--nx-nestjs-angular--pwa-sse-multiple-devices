@@ -15,7 +15,6 @@ export class AdminViewComponentService {
   getDevices() {
     this.devicesApiService.getDevices().subscribe((devices) => {
       this.devices.set(devices);
-      console.log('devices', this.devices());
     });
   }
 
