@@ -6,6 +6,7 @@ import { AppComponentService } from './app.component.service';
   standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
   imports: [RouterModule],
   providers: [AppComponentService],
 })
