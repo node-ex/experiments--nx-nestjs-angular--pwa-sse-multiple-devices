@@ -1,7 +1,13 @@
 import { TriggerConnectedDeviceRequestDto } from '@nestjs-angular-nx--template--basic/lib-js-1';
-import { Body, Controller, Post, Query, Sse } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  MessageEvent,
+  Post,
+  Query,
+  Sse,
+} from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { MessageEventWithMessage } from './types/message-event-with-message.type';
 import { TriggerService } from './trigger.service';
 
 @Controller('trigger')
@@ -10,9 +16,7 @@ export class TriggerController {
 
   @Sse('sse')
   // Must return an Observable stream
-  initializeSse(
-    @Query('deviceId') deviceId: string,
-  ): Observable<MessageEventWithMessage> {
+  initializeSse(@Query('deviceId') deviceId: string): Observable<MessageEvent> {
     return this.triggerService.initializeSse(deviceId);
   }
 
